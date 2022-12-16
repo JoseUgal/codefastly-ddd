@@ -1,7 +1,7 @@
 import { Server } from './server';
 
 export class MoasBackendApp {
-  server?: any;
+  server?: Server;
 
   async start() {
     const port = process.env.PORT || '5001';
@@ -10,7 +10,7 @@ export class MoasBackendApp {
   }
 
   get httpServer() {
-    return this.server?.getHTTPServer();
+    return this.server?.getHttpServer;
   }
 
   async stop() {

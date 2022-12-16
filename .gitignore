@@ -6,6 +6,7 @@ data
 test-results.xml
 yarn-error.log
 yarn.lock
+package-lock.json
 
 *.js
 *.js.map

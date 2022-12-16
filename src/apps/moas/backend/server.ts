@@ -1,5 +1,5 @@
 import { json, urlencoded } from 'body-parser';
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import Router from 'express-promise-router';
 import helmet from 'helmet';
 import * as http from 'http';
@@ -27,7 +27,7 @@ export class Server {
     router.use(errorHandler());
     this.express.use(router);
 
-    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    router.use((err: Error, req: Request, res: Response) => {
       console.log(err);
       res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR).send();
     });
@@ -37,7 +37,7 @@ export class Server {
     return new Promise(resolve => {
       this.httpServer = this.express.listen(this.port, () => {
         console.log(
-          `   Moas Backend App is running at http://localhost:${this.port} in ${this.express.get('env')} mode`
+          `   Moas Backend App is running at http://localhost:${this.port} in ${this.express.get('env')} mode`,
         );
         console.log('   Press CTRL-C to stop\n');
         return resolve();
