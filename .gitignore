@@ -1,0 +1,14 @@
+node_modules/
+dist/
+
+logs/
+data
+test-results.xml
+
+*.js
+*.js.map
+*.min.js
+*.css
+
+*.tmp
+*.swp
