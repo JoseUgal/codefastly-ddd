@@ -4,6 +4,8 @@ dist/
 logs/
 data
 test-results.xml
+yarn-error.log
+yarn.lock
 
 *.js
 *.js.map
