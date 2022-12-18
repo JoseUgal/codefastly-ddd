@@ -6,6 +6,7 @@ import * as http from 'http';
 import compress from 'compression';
 import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
+import { registerRoutes } from './routes';
 
 export class Server {
   private express: express.Express;
@@ -27,9 +28,10 @@ export class Server {
     router.use(errorHandler());
     this.express.use(router);
 
-    router.use((err: Error, req: Request, res: Response) => {
-      console.log(err);
-      res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR).send();
+    registerRoutes(router);
+
+    router.use((err: Error, req: Request, res: Response, next: Function) => {
+      res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     });
   }
 
@@ -37,15 +39,15 @@ export class Server {
     return new Promise(resolve => {
       this.httpServer = this.express.listen(this.port, () => {
         console.log(
-          `   Moas Backend App is running at http://localhost:${this.port} in ${this.express.get('env')} mode`,
+          `  Mock Backend App is running at http://localhost:${this.port} in ${this.express.get('env')} mode`,
         );
-        console.log('   Press CTRL-C to stop\n');
-        return resolve();
+        console.log('  Press CTRL-C to stop\n');
+        resolve();
       });
     });
   }
 
-  getHttpServer() {
+  getHTTPServer() {
     return this.httpServer;
   }
 

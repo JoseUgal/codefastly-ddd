@@ -10,7 +10,7 @@ export class MoasBackendApp {
   }
 
   get httpServer() {
-    return this.server?.getHttpServer;
+    return this.server?.getHTTPServer();
   }
 
   async stop() {
