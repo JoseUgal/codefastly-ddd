@@ -1,0 +1,8 @@
+services:
+  Moas.Companies.domain.CompanyRepository:
+    class: ../../../../../Contexts/Moas/Companies/infrastructure/persistence/FileCompanyRepository
+    arguments: []
+
+  Moas.Companies.application.CompanyCreator:
+    class: ../../../../../Contexts/Moas/Companies/application/CompanyCreator
+    arguments: ['@Moas.Companies.domain.CompanyRepository']

@@ -1,0 +1,8 @@
+services:
+  Apps.moas.controllers.StatusGetController:
+    class: ../../controllers/StatusGetController
+    arguments: []
+
+  Apps.moas.controllers.CompaniesPutController:
+    class: ../../controllers/CompaniesPutController
+    arguments: ['@Moas.Companies.application.CompanyCreator']

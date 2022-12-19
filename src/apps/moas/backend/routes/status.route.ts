@@ -1,9 +1,8 @@
 import { Router, Request, Response } from 'express';
 import { StatusGetController } from '../controllers/StatusGetController';
+import container from '../dependency-injection';
 
 export const register = (router: Router) => {
-  router.get('/status', async (req: Request, res: Response) => {
-    const controller = new StatusGetController();
-    controller.run(req, res);
-  });
+  const statusGetController: StatusGetController = container.get('Apps.moas.controllers.StatusGetController');
+  router.get('/status', async (req: Request, res: Response) => statusGetController.run(req, res));
 };
